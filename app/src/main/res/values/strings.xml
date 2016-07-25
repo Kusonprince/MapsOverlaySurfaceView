@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MapsOverlaySurfaceView</string>
+    <string name="app_name">MapsSurfaceView</string>
+    <string name="button1">根据地图sdk直接画demo</string>
+    <string name="button2">实际进阶使用</string>
+    <string name="description">心动不如行动, 就现在!</string>
+    <string name="campaign">Android开发技术讨论群,QQ群号:201808958</string>
 </resources>

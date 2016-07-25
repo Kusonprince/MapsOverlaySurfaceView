@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">  <!-- 表示以下动画同时执行,sequentially则是顺序执行 -->
+
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="scaleX"
+        android:valueFrom="1"
+        android:valueTo="1.5"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite">
+    </objectAnimator>
+
+    <objectAnimator
+        android:duration="1000"
+        android:propertyName="scaleY"
+        android:valueFrom="1"
+        android:valueTo="1.5"
+        android:repeatMode="reverse"
+        android:repeatCount="infinite">
+    </objectAnimator>
+
+</set>
