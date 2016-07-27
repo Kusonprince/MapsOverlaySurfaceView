@@ -65,8 +65,6 @@ public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultLi
         mSearch.setOnGetRoutePlanResultListener(this);
     }
 
-    ///////llallallla
-
     //路线规划搜索返回结果,步行
     @Override
     public void onGetWalkingRouteResult(WalkingRouteResult walkingRouteResult) {
