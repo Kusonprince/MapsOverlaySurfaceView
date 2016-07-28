@@ -170,7 +170,8 @@ public class CarThread extends Thread {
                             rotationThread = new RotationThread();
                             rotationThread.start();
                             try {
-                                rotationThread.join();
+                                if(this.isAlive())
+                                    rotationThread.join();
                             } catch (InterruptedException e) {
                                 // TODO Auto-generated catch block
                                 e.printStackTrace();
@@ -200,7 +201,8 @@ public class CarThread extends Thread {
                 rotationThread = new RotationThread();
                 rotationThread.start();
                 try {
-                    rotationThread.join();
+                    if(this.isAlive())
+                        rotationThread.join();
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

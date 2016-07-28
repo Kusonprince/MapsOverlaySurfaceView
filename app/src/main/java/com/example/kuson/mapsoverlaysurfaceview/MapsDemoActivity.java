@@ -272,10 +272,10 @@ public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultLi
 
     @Override
     protected void onDestroy() {
-        mMapView.onDestroy();
-        mSearch.destroy();
         if(carMangager != null)
             carMangager.stopWork();
+        mMapView.onDestroy();
+        mSearch.destroy();
         super.onDestroy();
     }
 
