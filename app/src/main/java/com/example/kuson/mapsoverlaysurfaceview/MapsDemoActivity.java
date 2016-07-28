@@ -9,6 +9,8 @@ import android.widget.Toast;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapPoi;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
@@ -35,7 +37,7 @@ import mapapi.overlayutil.WalkingRouteOverlay;
  * Created by Kuson on 16/7/25.
  * 在地图路线规划上直接画,demo级别
  */
-public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultListener{
+public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultListener, BaiduMap.OnMapClickListener{
 
     private MapOverLayViewSurfaceView auto_send_order_overy;
     MapView mMapView = null;    // 地图View
@@ -61,6 +63,8 @@ public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultLi
         mBaidumap = mMapView.getMap();
         mMapView.showZoomControls(false);  //隐藏比例尺
         mMapView.showScaleControl(false);  //隐藏缩放按钮
+        mBaidumap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(
+                new MapStatus.Builder().zoom(17.5f).overlook(0).build()), 500);
         mSearch = RoutePlanSearch.newInstance();
         mSearch.setOnGetRoutePlanResultListener(this);
     }
@@ -173,6 +177,16 @@ public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultLi
         }
     }
 
+    @Override
+    public void onMapClick(LatLng latLng) {
+        mBaidumap.hideInfoWindow();
+    }
+
+    @Override
+    public boolean onMapPoiClick(MapPoi mapPoi) {
+        return false;
+    }
+
 
     //定制RouteOverly
     private class MyDrivingRouteOverlay extends DrivingRouteOverlay {
@@ -258,11 +272,11 @@ public class MapsDemoActivity extends Activity implements OnGetRoutePlanResultLi
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         mMapView.onDestroy();
         mSearch.destroy();
         if(carMangager != null)
             carMangager.stopWork();
+        super.onDestroy();
     }
 
 
